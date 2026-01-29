@@ -8,6 +8,7 @@ export default async function handler(req, res) {
       return res.status(400).json({
         status: false,
         message: "Missing parameters",
+        dev_credit: "@mynk_mynk_mynk",
         credit: "@mynk_mynk_mynk"
       });
     }
@@ -18,6 +19,8 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       ...response.data,
+
+      dev_credit: "@mynk_mynk_mynk",
       credit: "@mynk_mynk_mynk"
     });
 
@@ -25,6 +28,7 @@ export default async function handler(req, res) {
     return res.status(500).json({
       status: false,
       error: "Server Error",
+      dev_credit: "@mynk_mynk_mynk",
       credit: "@mynk_mynk_mynk"
     });
   }
