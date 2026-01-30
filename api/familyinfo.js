@@ -17,14 +17,17 @@ export default async function handler(req, res) {
 
     const response = await axios.get(url);
 
-    // 👉 Remove old dev_credit
+    // Copy data
     const data = { ...response.data };
+
+    // Remove old credits
     delete data.dev_credit;
+    delete data["dev|credit"];
 
     return res.status(200).json({
       ...data,
 
-      // 👉 Only your credit
+      // Only your credit
       dev_credit: "@mynk_mynk_mynk",
       credit: "@mynk_mynk_mynk"
     });
