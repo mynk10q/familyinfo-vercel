@@ -17,9 +17,14 @@ export default async function handler(req, res) {
 
     const response = await axios.get(url);
 
-    return res.status(200).json({
-      ...response.data,
+    // 👉 Remove old dev_credit
+    const data = { ...response.data };
+    delete data.dev_credit;
 
+    return res.status(200).json({
+      ...data,
+
+      // 👉 Only your credit
       dev_credit: "@mynk_mynk_mynk",
       credit: "@mynk_mynk_mynk"
     });
