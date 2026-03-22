@@ -14,21 +14,19 @@ export default async function handler(req, res) {
       });
     }
 
-    // NEW API URL
+    // original API
     const url = `https://familyyyy-info.vercel.app/key-api?key=${key}&term=${term}`;
 
     const response = await axios.get(url);
 
     const data = { ...response.data };
 
-    // remove old credit if exists
     delete data.dev_credit;
     delete data.credit;
     delete data["dev|credit"];
 
     return res.status(200).json({
       ...data,
-
       dev_credit: "@mynk_mynk_mynk",
       credit: "@mynk_mynk_mynk"
     });
